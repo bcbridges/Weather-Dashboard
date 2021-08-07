@@ -18,7 +18,7 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <header class="container mb-3">
+    <header class="container mb-3 mt-3">
       <nav class="navbar navbar-light bg-light col-lg-12">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"> Weather Dashboard </a>
@@ -26,7 +26,7 @@
       </nav>
     </header>
 
-    <section class="container">
+    <section class="container vh-80">
       <div class="row">
         <div class="col-lg-4">
           <h4 class="mb-3">Search for a City:</h4>
@@ -55,14 +55,22 @@
             Bradenton, FL
           </button>
         </div>
-        <div class="col-lg-8">
-          <p class="h-50">This has the general city info</p>
+        <div class="col-lg-8 vh-80">
+          <div class="h-50">
+            <h2>This has the general city info</h2>
+            <img src="" alt="Current Weather Icon" id="currentIcon" />
+            <p id="currentTemp"></p>
+            <p id="currentWind"></p>
+            <p id="currentHumid"></p>
+            <p id="currentUV"></p>
+          </div>
           <p class="h-50">This will contain the 5 day forcasts</p>
         </div>
       </div>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>
 </html>
