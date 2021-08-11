@@ -17,7 +17,7 @@
     />
     <title>Weather Dashboard</title>
   </head>
-  <body>
+  <body class="vh-100">
     <header class="container mb-3 mt-3">
       <nav class="navbar navbar-light bg-light col-lg-12">
         <div class="container-fluid">
@@ -26,8 +26,8 @@
       </nav>
     </header>
 
-    <section class="container vh-80">
-      <div class="row">
+    <section class="container">
+      <div class="vh-80 row">
         <div class="col-lg-4">
           <h4 class="mb-3">Search for a City:</h4>
           <div class="input-group form-outline mb-3">
@@ -42,21 +42,10 @@
             <i class="fas fa-search">Search</i>
           </button>
           <!--This group of buttons are the previous searches-->
-          <button type="button" class="btn btn-secondary col-lg-12 mb-3">
-            Denver, CO
-          </button>
-          <button type="button" class="btn btn-secondary col-lg-12 mb-3">
-            London, ENG
-          </button>
-          <button type="button" class="btn btn-secondary col-lg-12 mb-3">
-            Springfield, IL
-          </button>
-          <button type="button" class="btn btn-secondary col-lg-12 mb-3">
-            Bradenton, FL
-          </button>
+          <div id="searchHistory"></div>
         </div>
-        <div class="col-lg-8 vh-80">
-          <div class="h-50">
+        <div class="col-lg-8">
+          <div class="h-30">
             <h2>This has the general city info</h2>
             <img src="" alt="Current Weather Icon" id="currentIcon" />
             <p id="currentTemp"></p>
@@ -64,7 +53,55 @@
             <p id="currentHumid"></p>
             <p id="currentUV"></p>
           </div>
-          <p class="h-50">This will contain the 5 day forcasts</p>
+          <div id="fiveDayForcasts" class="row">
+            <h3 class="h-50 mb-3">5-Day Forecast:</h3>
+            <div
+              class="
+                col-lg-2
+                border
+                rounded
+                mr-2
+                border
+                rounded
+                bg-secondary
+                text-white
+              "
+            >
+              <h4 id="day0"></h4>
+              <img src="" alt="Daily Weather Icon" id="day0Icon" />
+              <p id="day0Temp"></p>
+              <p id="day0Wind"></p>
+              <p id="day0Humidity"></p>
+            </div>
+            <div class="col-lg-2 border rounded bg-secondary text-white">
+              <h4 id="day8"></h4>
+              <img src="" alt="Daily Weather Icon" id="day8Icon" />
+              <p id="day8Temp"></p>
+              <p id="day8Wind"></p>
+              <p id="day8Humidity"></p>
+            </div>
+            <div class="col-lg-2 border border rounded bg-secondary text-white">
+              <h4 id="day16"></h4>
+              <img src="" alt="Daily Weather Icon" id="day16Icon" />
+              <p id="day16Temp"></p>
+              <p id="day16Wind"></p>
+              <p id="day16Humidity"></p>
+            </div>
+            <div class="col-lg-2 border rounded bg-secondary text-white">
+              <h4 id="day24"></h4>
+              <img src="" alt="Daily Weather Icon" id="day24Icon" />
+              <p id="day24Temp"></p>
+              <p id="day24Wind"></p>
+              <p id="day24Humidity"></p>
+            </div>
+            <div class="col-lg-2 border rounded bg-secondary text-white">
+              <h4 id="day32"></h4>
+              <img src="" alt="Daily Weather Icon" id="day32Icon" />
+              <p id="day32Temp"></p>
+              <p id="day32Wind"></p>
+              <p id="day32Humidity"></p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
