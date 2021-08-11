@@ -124,6 +124,7 @@ function fiveDayWeather() {
     });
 }
 
+// Loads Denver as the City on default. Similar to functions above but removed local storage interaction.
 initialCity = "Denver";
 initialPopulate();
 function initialPopulate() {
@@ -136,9 +137,58 @@ function initialPopulate() {
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
     initialCity +
     "&units=imperial&appid=664962eef7f2cf7af32f08a6b013f9c8";
-  // Calls API using searched city
-  getCurrentWeather($(this));
-  fiveDayWeather($(this));
+
+  fetch(currentWeather)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var cityName = data.name;
+      var cityTemp = data.main.temp;
+      var cityWind = data.wind.speed;
+      var cityHumidity = data.main.humidity;
+      var weatherIconCode = data.weather[0].icon;
+      var weatherIconLink =
+        "http://openweathermap.org/img/wn/" + weatherIconCode + ".png";
+
+      $("h2").text(cityName + " (" + currentDay + ")");
+      $("#currentIcon").attr("src", weatherIconLink);
+      $("#currentTemp").text("Current Temp: " + cityTemp + "°F");
+      $("#currentWind").text("Wind Speed: " + cityWind + " MPH");
+      $("#currentHumid").text("Humidity " + cityHumidity + "%");
+    });
+
+  fetch(fiveDayWeatherURL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      if (data.cod == 200) {
+        dayCounter = 0;
+        while (dayCounter < 40) {
+          var weatherDate = data.list[dayCounter].dt_txt;
+          var dateIconCode = data.list[dayCounter].weather[0].icon;
+          var dateTemp = data.list[dayCounter].main.feels_like;
+          var dateWind = data.list[dayCounter].wind.speed;
+          var dateHumidity = data.list[dayCounter].main.humidity;
+          var weatherIconLink =
+            "http://openweathermap.org/img/wn/" + dateIconCode + ".png";
+
+          var dayid = "#day" + dayCounter;
+          var tempid = "#day" + dayCounter + "Temp";
+          var windid = "#day" + dayCounter + "Wind";
+          var humidid = "#day" + dayCounter + "Humidity";
+          var iconid = "#day" + dayCounter + "Icon";
+
+          $(dayid).text(weatherDate);
+          $(iconid).attr("src", weatherIconLink);
+          $(tempid).text("Temp: " + dateTemp + "°F");
+          $(windid).text("Wind: " + dateWind + " MPH");
+          $(humidid).text("Humidity: " + dateHumidity + " %");
+          dayCounter += 8;
+        }
+      }
+    });
 }
 
 populateSearchHistory();
