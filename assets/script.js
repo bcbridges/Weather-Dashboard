@@ -29,6 +29,7 @@ function getCurrentWeather() {
         console.log("This is a valid location");
         console.log(searchHistory);
         searchHistory.push(data.name);
+        localStorage.setItem("searchHistLocal", JSON.stringify(searchHistory));
         var historyButton = $("<button>")
           .addClass("btn btn-secondary col-lg-12 mb-3")
           .attr("type", "button")
@@ -46,7 +47,14 @@ var searchHistory = [];
 function populateSearchHistory() {
   searchHistory = JSON.parse(localStorage.getItem("searchHistLocal"));
   if (searchHistory == null) {
-    searchHistory = [];
+    searchHistory = ["Denver"];
+    $.each(searchHistory, function (i) {
+      var historyButton = $("<button>")
+        .addClass("btn btn-secondary col-lg-12 mb-3")
+        .attr("type", "button")
+        .text(searchHistory[i]);
+      $("#searchHistory").append(historyButton);
+    });
   } else {
     $.each(searchHistory, function (i) {
       var historyButton = $("<button>")
@@ -116,19 +124,21 @@ function fiveDayWeather() {
     });
 }
 
-searchCity = "Denver";
+initialCity = "Denver";
 initialPopulate();
 function initialPopulate() {
   currentWeather =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
-    searchCity +
+    initialCity +
     "&units=imperial&appid=664962eef7f2cf7af32f08a6b013f9c8";
 
   fiveDayWeatherURL =
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
-    searchCity +
+    initialCity +
     "&units=imperial&appid=664962eef7f2cf7af32f08a6b013f9c8";
   // Calls API using searched city
   getCurrentWeather($(this));
   fiveDayWeather($(this));
 }
+
+populateSearchHistory();

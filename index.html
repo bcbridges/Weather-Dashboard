@@ -19,9 +19,9 @@
   </head>
   <body class="vh-100">
     <header class="container mb-3 mt-3">
-      <nav class="navbar navbar-light bg-light col-lg-12">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"> Weather Dashboard </a>
+      <nav class="navbar navbar-light bg-primary col-lg-12">
+        <div class="container-fluid" style="justify-content: center">
+          <a class="navbar-brand text-light" href="#"> Weather Dashboard </a>
         </div>
       </nav>
     </header>
@@ -45,7 +45,7 @@
           <div id="searchHistory"></div>
         </div>
         <div class="col-lg-8">
-          <div class="h-30">
+          <div class="h-30 border rounded p-2">
             <h2>This has the general city info</h2>
             <img src="" alt="Current Weather Icon" id="currentIcon" />
             <p id="currentTemp"></p>
@@ -53,19 +53,14 @@
             <p id="currentHumid"></p>
             <p id="currentUV"></p>
           </div>
-          <div id="fiveDayForcasts" class="row">
+          <div
+            id="fiveDayForcasts"
+            class="row"
+            style="justify-content: space-between"
+          >
             <h3 class="h-50 mb-3">5-Day Forecast:</h3>
             <div
-              class="
-                col-lg-2
-                border
-                rounded
-                mr-2
-                border
-                rounded
-                bg-secondary
-                text-white
-              "
+              class="col-lg-2 border rounded rounded bg-secondary text-white"
             >
               <h4 id="day0"></h4>
               <img src="" alt="Daily Weather Icon" id="day0Icon" />
@@ -80,7 +75,7 @@
               <p id="day8Wind"></p>
               <p id="day8Humidity"></p>
             </div>
-            <div class="col-lg-2 border border rounded bg-secondary text-white">
+            <div class="col-lg-2 border rounded bg-secondary text-white">
               <h4 id="day16"></h4>
               <img src="" alt="Daily Weather Icon" id="day16Icon" />
               <p id="day16Temp"></p>
